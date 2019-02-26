@@ -2,18 +2,19 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 
-class AdminController extends Controller
+class AdminController extends AbstractController
 {
     /**
      * @Route("/admin", name="admin")
-     * @Security("has_role('ROLE_ADMIN')")
+     * @IsGranted("ROLE_ADMIN")
      */
-    public function indexAction()
+    public function index()
     {
         $template = 'admin/index.html.twig';
         $args = [];
